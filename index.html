@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .danger {
+        color: red;
+        }
+        .inner {
+            display: flex;
+            justify-content: center;
+        }
+        .inner div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="inner">
+        <div>
+            <h3>Counter</h3>
+            <p id="counter-value">1</p>
+            <p><small id="error-msg"></small></p>
+            <button id="increament">+</button>
+            <button id="decreament">-</button>
+        </div>
+    </div>
+    <script>
+        let counter = 1;
+
+document.getElementById('increament').addEventListener('click', function(){
+    counter++;
+    document.getElementById('counter-value').innerText = counter;
+    if(counter > 10){
+        document.getElementById('counter-value').classList = 'danger';
+    } else {
+        document.getElementById('counter-value').className = '';
+    }
+    if(counter >= 1){
+       document.getElementById('error-msg').innerText = ' ';
+    }
+});
+
+document.getElementById('decreament').addEventListener('click', function(){
+    if(counter >= 1) {
+        counter--;
+        document.getElementById('counter-value').innerText = counter;
+    }  else {
+        document.getElementById('error-msg').innerText = 'Counter value can not be negative';
+        document.getElementById('error-msg').classList = 'danger';
+    }
+    if(counter < 10){
+        document.getElementById('counter-value').classList.remove('danger');
+    }
+});
+    </script>
+</body>
+</html>
